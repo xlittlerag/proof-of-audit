@@ -46,15 +46,14 @@
           description = "A command line tool for interacting with the Stacks blockchain, designed for developers";
           homepage = "https://github.com/hirosystems/clarinet";
           license = licenses.gpl3Only;
-          platforms = ["x86_64-linux"]; # This binary is specific to this platform
-          maintainers = []; # You can add your GitHub handle here
+          platforms = ["x86_64-linux"];
+          maintainers = [];
         };
       };
 
       # This defines the default devShell, accessible via `nix develop`
       devShells.default = pkgs.mkShell {
         name = "clarinet-dev-shell";
-        # The packages to make available in the shell environment.
         packages = [
           self.packages.${system}.clarinet
           pkgs.nodejs
