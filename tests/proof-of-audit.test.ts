@@ -41,9 +41,8 @@ describe("proof-of-audit contract tests", () => {
       nonDeployer,
     );
 
-    // Assert: The transaction should fail with err u100 (ERR-HASH-ALREADY-EXISTS).
-    // Note: The contract uses the same error code for unauthorized and duplicate hashes.
-    expect(result.result).toBeErr(Cl.uint(100));
+    // Assert: The transaction should fail with err u101 (ERR-NOT-OWNER).
+    expect(result.result).toBeErr(Cl.uint(101));
   });
 
   // Test Case 3: Duplicate Hash Rejection

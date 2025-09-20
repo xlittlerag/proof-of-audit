@@ -14,6 +14,7 @@
 
 (define-constant DEPLOYER tx-sender)
 (define-constant ERR-HASH-ALREADY-EXISTS (err u100))
+(define-constant ERR-NOT-OWNER (err u101))
 
 
 ;; --- Public Functions ---
@@ -25,7 +26,7 @@
 (define-public (anchor-hash (hash (buff 32)))
   (begin
     ;; Check the caller is the audit firm.
-    (asserts! (is-eq DEPLOYER contract-caller) ERR-HASH-ALREADY-EXISTS)
+    (asserts! (is-eq DEPLOYER contract-caller) ERR-NOT-OWNER)
 
     ;; Check if the hash has already been stored in the map.
     (asserts! (is-none (map-get? proof-of-audit hash)) ERR-HASH-ALREADY-EXISTS)
